@@ -3,8 +3,8 @@ jpkfile
 
 jpkfile is a module for reading of data archives recorded with
 `JPK Instruments <http://www.jpk.com/>`_.
-The project's repository can be found
-`here <https://gitlab.gwdg.de/ikuhlem/jpkfile>`_.
+This is a forked repo adding functionalities to fix project specific bugs, the original project's repository can be found
+`here <https://gitlab.gwdg.de/ikuhlem/jpkfile>`_ written by ikuhlem.
 
 Install
 =======
@@ -18,12 +18,12 @@ The simplest way, if you have internet access on the target device, is to instal
 
 .. code::
 
-   $ pip install --user jpkfile
+   $ pip install git+https://github.com/JelleWestra/jpkfile.git
 
 via source
 ----------
 
-You can also clone/download the source files from `jpkfile's project page <https://gitlab.gwdg.de/ikuhlem/jpkfile>`_. Navigate to your copy of the project folder in a command line and type:
+You can also clone/download the source files from `this project page <https://github.com/JelleWestra/jpkfile>`_. Navigate to your copy of the project folder in a command line and type:
 
 .. code::
 
