@@ -764,12 +764,31 @@ def parse_header_file(content):
         start = 1
 
     datestr = content[start][1:].strip()
-    try:
-        fmt = '%Y-%m-%d %H:%M:%S %Z%z'
-        t = datetime.strptime(datestr, fmt)
+    
+    try:       
+        # [OLD]
+        #fmt = '%Y-%m-%d %H:%M:%S %Z%z'
+        # t = datetime.strptime(datestr, fmt)
+
+        # [FIX] : getting rid of the timezone
+        fmt = '%Y-%m-%d %H:%M:%S'
+        _datestr = ' '.join(datestr.split(' ')[:-1])
+        
+        t = datetime.strptime(_datestr, fmt)
     except:
-        fmt = "%a %b %d %H:%M:%S %Z %Y"
-        t = datetime.strptime(datestr, fmt)
+        # [OLD]
+        # fmt = "%a %b %d %H:%M:%S %Z %Y"
+        # t = datetime.strptime(datestr, fmt)
+
+        # [FIX] : getting rid of the timezones
+        fmt = "%a %b %d %H:%M:%S %Y"
+        _datestr = ' '.join(datestr.split(' ')[:-2] + [datestr.split(' ')[-1]])
+
+        try:
+            t = datetime.strptime(_datestr, fmt)
+        # if it didn't fix it, just skip the date formatting as we don't really use it anyways
+        except:
+            t = None
 
     header_dict['date'] = t
 
