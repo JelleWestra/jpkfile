@@ -102,11 +102,11 @@ def read_segment_data(self, segment_number, segment, split, fname):
 class JPKFile:
     """Class to unzip a JPK archive and handle access to its headers and data.
 
-    :param fname: Filename of archive to read data from.
+    :param _zip: input zipfile (.jpk-force file read with the ZipFile).
     :type fname: str"""
-    def __init__(self, fname):        
+    def __init__(self, _zip):        
         """Initializes JPKFile object."""
-        self.jpk_zip = ZipFile(fname)
+        self.jpk_zip = _zip
         self.data = None
         #: Dictionary containing parameters read from the top level 
         #: ``header.properties`` file.
